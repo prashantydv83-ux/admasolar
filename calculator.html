@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solar Savings Calculator | ADMA Solar</title>
+  <link rel="icon" href="images/adma-logo.webp">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header id="site-header"></header>
+  <div class="page-hero" style="background-image:linear-gradient(180deg,rgba(11,20,28,.72),rgba(11,20,28,.55)),url('images/rooftop-home.jpg')">
+    <div class="wrap">
+      <p class="eyebrow">PM Surya Ghar subsidy engine</p>
+      <h1>ADMA Solar savings calculator.</h1>
+      <p>Plant kW, roof area, annual savings, and central CFA.</p>
+    </div>
+  </div>
+  <section class="calc" id="calculator">
+    <div class="wrap">
+      <div class="calc-grid">
+        <form class="calc-form" onsubmit="return admaCalculate(event)">
+          <label for="bill">Monthly bill (₹)</label>
+          <input id="bill" type="number" min="500" step="100" value="3500" required>
+          <label for="state">State</label>
+          <select id="state">
+            <option>DELHI</option><option selected>UTTAR PRADESH</option><option>HARYANA</option><option>PUNJAB</option><option>RAJASTHAN</option><option>MAHARASHTRA</option><option>GUJARAT</option><option>KARNATAKA</option><option>TAMIL NADU</option><option>TELANGANA / ANDHRA PRADESH</option><option>OTHER STATE</option>
+          </select>
+          <label for="useType">Use</label>
+          <select id="useType"><option value="residential">Residential</option><option value="commercial">Commercial</option></select>
+          <p class="note">WhatsApp +91 73033 97790</p>
+          <button class="btn btn-dark" type="submit">Calculate</button>
+        </form>
+        <div class="calc-result" id="calc-out">
+          <div class="results">
+            <div class="result"><span>System size</span><strong id="r-kw">—</strong></div>
+            <div class="result"><span>Monthly units*</span><strong id="r-gen">—</strong></div>
+            <div class="result"><span>Annual savings*</span><strong id="r-save">—</strong></div>
+            <div class="result"><span>Subsidy*</span><strong id="r-sub">—</strong></div>
+            <div class="result"><span>Net cost*</span><strong id="r-cost">—</strong></div>
+            <div class="result"><span>Roof area</span><strong id="r-area">—</strong></div>
+          </div>
+          <a class="btn btn-gold" href="contact.html" style="margin-top:20px">Book free site assessment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer id="site-footer"></footer>
+  <script src="js/site.js"></script>
+</body></html>
