@@ -25,7 +25,12 @@ jobs:
       - name: Fetch images if missing
         run: |
           mkdir -p images
-          get() { [ -s "$1" ] || curl -fsSL -o "$1" "$2"; }
+          UA="Mozilla/5.0 (compatible; ADMASolarBot/1.0)"
+          get() {
+            if [ ! -s "$1" ]; then
+              curl -fsSL -A "$UA" -o "$1" "$2" || rm -f "$1"
+            fi
+          }
           get images/adma-logo.webp "https://admasolar.com/new/assets/icons/adma.webp"
           get images/grid.webp "https://admasolar.com/new/assets/images/grid.webp"
           get images/battery-solar.webp "https://admasolar.com/new/assets/images/battery-solar.webp"
@@ -35,7 +40,8 @@ jobs:
           get images/modules.jpg "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80"
           get images/studio.jpg "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
           get images/hero-desert.jpg "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=80"
-          cp images/adma-logo.webp images/logo-official.png || true
+          if [ -s images/adma-logo.webp ]; then cp images/adma-logo.webp images/logo-official.png || true; fi
+          ls -la images || true
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
